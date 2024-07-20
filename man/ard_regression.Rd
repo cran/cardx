@@ -12,7 +12,7 @@ ard_regression(x, ...)
 \arguments{
 \item{x}{regression model object}
 
-\item{...}{Arguments passed to \code{broom.helpers::tidy_plus_plus()}}
+\item{...}{Arguments passed to \code{\link[broom.helpers:tidy_plus_plus]{broom.helpers::tidy_plus_plus()}}}
 
 \item{tidy_fun}{(\code{function})\cr
 a tidier. Default is \code{\link[broom.helpers:tidy_with_broom_or_parameters]{broom.helpers::tidy_with_broom_or_parameters}}}
@@ -25,6 +25,8 @@ Function takes a regression model object and converts it to a ARD
 structure using the \code{broom.helpers} package.
 }
 \examples{
+\dontshow{if (do.call(asNamespace("cardx")$is_pkg_installed, list(pkg = "broom.helpers", reference_pkg = "cardx"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 lm(AGE ~ ARM, data = cards::ADSL) |>
   ard_regression(add_estimate_to_reference_rows = TRUE)
+\dontshow{\}) # examplesIf}
 }

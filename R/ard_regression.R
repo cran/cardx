@@ -6,12 +6,12 @@
 #' @param x regression model object
 #' @param tidy_fun (`function`)\cr
 #'   a tidier. Default is [`broom.helpers::tidy_with_broom_or_parameters`]
-#' @param ... Arguments passed to `broom.helpers::tidy_plus_plus()`
+#' @param ... Arguments passed to [`broom.helpers::tidy_plus_plus()`]
 #'
 #' @return data frame
 #' @name ard_regression
 #'
-#' @examples
+#' @examplesIf do.call(asNamespace("cardx")$is_pkg_installed, list(pkg = "broom.helpers", reference_pkg = "cardx"))
 #' lm(AGE ~ ARM, data = cards::ADSL) |>
 #'   ard_regression(add_estimate_to_reference_rows = TRUE)
 NULL
@@ -25,11 +25,13 @@ ard_regression <- function(x, ...) {
 #' @rdname ard_regression
 #' @export
 ard_regression.default <- function(x, tidy_fun = broom.helpers::tidy_with_broom_or_parameters, ...) {
+  set_cli_abort_call()
+
   # check installed packages ---------------------------------------------------
-  cards::check_pkg_installed("broom.helpers", reference_pkg = "cards")
+  check_pkg_installed(pkg = "broom.helpers", reference_pkg = "cardx")
 
   # check inputs ---------------------------------------------------------------
-  check_not_missing(x, "model")
+  check_not_missing(x)
 
   # summarize model ------------------------------------------------------------
   broom.helpers::tidy_plus_plus(
@@ -47,6 +49,7 @@ ard_regression.default <- function(x, tidy_fun = broom.helpers::tidy_with_broom_
       values_to = "stat"
     ) |>
     dplyr::filter(map_lgl(.data$stat, Negate(is.na))) |>
+    dplyr::select(-(cards::all_ard_variables("levels") & dplyr::where(\(x) all(is.na(x))))) |>
     dplyr::mutate(
       fmt_fn =
         lapply(
