@@ -11,7 +11,7 @@
 #' @return ARD data frame
 #' @name ard_continuous_ci
 #'
-#' @examples
+#' @examplesIf do.call(asNamespace("cardx")$is_pkg_installed, list(pkg = "broom", reference_pkg = "cardx"))
 #' ard_continuous_ci(mtcars, variables = c(mpg, hp), method = "wilcox.test")
 #' ard_continuous_ci(mtcars, variables = mpg, by = am, method = "t.test")
 NULL
@@ -30,6 +30,13 @@ ard_continuous_ci.data.frame <- function(data, variables, by = dplyr::group_vars
 
   # check inputs ---------------------------------------------------------------
   method <- arg_match(method)
+  check_not_missing(variables)
+  cards::process_selectors(data, by = {{ by }}, variables = {{ variables }})
+
+  # return empty ARD if no variables selected ----------------------------------
+  if (is_empty(variables)) {
+    return(dplyr::tibble() |> cards::as_card())
+  }
 
   # calculate CIs --------------------------------------------------------------
   switch(method,
