@@ -1,4 +1,4 @@
-skip_if_not(is_pkg_installed(pkg = "broom.helpers", reference_pkg = "cardx"))
+skip_if_not(is_pkg_installed(pkg = "broom.helpers"))
 
 test_that("ard_regression() works", {
   withr::local_options(list(width = 90))
@@ -24,7 +24,7 @@ test_that("ard_regression() works", {
 })
 
 test_that("ard_regression() works specifying custom tidier", {
-  skip_if_not(is_pkg_installed(pkg = c("lme4", "broom.mixed"), reference_pkg = "cardx"))
+  skip_if_not(is_pkg_installed(pkg = c("lme4", "broom.mixed")))
   withr::local_options(list(width = 90))
 
   expect_snapshot(
@@ -44,14 +44,17 @@ test_that("ard_regression() does not produce `variable_level` column where not a
 })
 
 test_that("ard_regression() warnings and errors return correctly", {
+  skip_if_not(is_pkg_installed(pkg = "parameters"))
+  # constructed a model where broom.helpers fails,
+  # fall back method uses parameters which returns different messaging.
   mod <- lm(AGE ~ ARM, data = cards::ADSL)
   mod$coefficients <- NULL
+  df <- mod |>
+    ard_regression() |>
+    as.data.frame()
 
-  expect_snapshot(
-    mod |>
-      ard_regression() |>
-      as.data.frame()
-  )
+  expect_false(is_empty(df$error))
+  expect_true(is_empty(df$stat[[1]]))
 })
 
 test_that("ard_regression() follows ard structure", {
