@@ -13,6 +13,7 @@ ard_categorical_ci(data, ...)
   by = dplyr::group_vars(data),
   method = c("waldcc", "wald", "clopper-pearson", "wilson", "wilsoncc", "strat_wilson",
     "strat_wilsoncc", "agresti-coull", "jeffreys"),
+  denominator = c("column", "row", "cell"),
   conf.level = 0.95,
   value = list(where(is_binary) ~ 1L, where(is.logical) ~ TRUE),
   strata = NULL,
@@ -29,18 +30,23 @@ a data frame}
 
 \item{variables}{(\code{\link[dplyr:dplyr_tidy_select]{tidy-select}})\cr
 columns to include in summaries. Columns must be class \verb{<logical>}
-or \verb{<numeric>} values coded as \code{c(0, 1)}.}
+or \verb{<numeric>} values coded as \code{c(0,1)}.}
 
 \item{by}{(\code{\link[dplyr:dplyr_tidy_select]{tidy-select}})\cr
-columns to stratify calculations by}
+columns to stratify calculations by.}
 
 \item{method}{(\code{string})\cr
 string indicating the type of confidence interval to calculate.
 Must be one of .
 See \code{?proportion_ci} for details.}
 
-\item{conf.level}{(\code{numeric})\cr
-a scalar in \verb{(0, 1)} indicating the confidence level.
+\item{denominator}{(\code{string})\cr
+Must be one of \code{'column'} (default), \code{'row'}, and \code{'cell'}, which specifies
+the direction of the calculation/denominator. Argument is similar to
+\code{cards::ard_categorical(denominator)}.}
+
+\item{conf.level}{(scalar \code{numeric})\cr
+a scalar in \verb{(0,1)} indicating the confidence level.
 Default is \code{0.95}}
 
 \item{value}{(\code{\link[cards:syntax]{formula-list-selector}})\cr
@@ -56,7 +62,6 @@ when \code{method='strat_wilson'}}
 an ARD data frame
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}\cr
 Calculate confidence intervals for proportions.
 }
 \examples{

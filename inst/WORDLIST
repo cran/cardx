@@ -11,6 +11,7 @@ Kaplan
 Lifecycle
 McNemar's
 Newcombe
+ORCID
 Rao
 Rua
 SMD
@@ -29,6 +30,7 @@ gtsummary
 mmrm
 pre
 quosures
+renv
 rlang's
 sd
 unlist
