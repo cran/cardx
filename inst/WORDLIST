@@ -5,6 +5,7 @@ CMD
 Chisq
 Clopper
 Codecov
+Haenszel
 Hoffmann
 Jeffreys
 Kaplan
@@ -33,8 +34,10 @@ quosures
 renv
 rlang's
 sd
+tidyselect
 unlist
 unnests
+unstratified
 vif
 wald
 wilcox
