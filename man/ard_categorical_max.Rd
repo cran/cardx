@@ -11,9 +11,11 @@ ard_categorical_max(
   by = dplyr::group_vars(data),
   statistic = everything() ~ c("n", "p", "N"),
   denominator = NULL,
-  fmt_fn = NULL,
+  strata = NULL,
+  fmt_fun = NULL,
   stat_label = everything() ~ cards::default_stat_labels(),
   quiet = FALSE,
+  fmt_fn = deprecated(),
   ...
 )
 }
@@ -27,9 +29,17 @@ The categorical variables for which occurrence rates per unique ID (by maximum l
 \item{id}{(\code{\link[dplyr:dplyr_tidy_select]{tidy-select}})\cr
 Argument used to subset \code{data} to identify rows in \code{data} to calculate categorical variable level occurrence rates.}
 
-\item{by}{(\code{\link[dplyr:dplyr_tidy_select]{tidy-select}})\cr
-columns to tabulate by in the series of ARD function calls.
-Any rows with \code{NA} or \code{NaN} values are removed from all calculations.}
+\item{by, strata}{(\code{\link[dplyr:dplyr_tidy_select]{tidy-select}})\cr
+columns to use for grouping or stratifying the table output.
+Arguments are similar, but with an important distinction:
+
+\code{by}: results are tabulated by \strong{all combinations} of the columns specified,
+including unobserved combinations and unobserved factor levels.
+
+\code{strata}: results are tabulated by \strong{all \emph{observed} combinations} of the
+columns specified.
+
+Arguments may be used in conjunction with one another.}
 
 \item{statistic}{(\code{\link[cards:syntax]{formula-list-selector}})\cr
 a named list, a list of formulas,
@@ -41,7 +51,7 @@ An optional argument to change the denominator used for \code{"N"} and \code{"p"
 Defaults to \code{NULL}, in which case \code{dplyr::distinct(data, dplyr::pick(all_of(c(id, by))))} is used for these
 calculations. See \code{\link[cards:ard_categorical]{cards::ard_categorical()}} for more details on specifying denominators.}
 
-\item{fmt_fn}{(\code{\link[cards:syntax]{formula-list-selector}})\cr
+\item{fmt_fun}{(\code{\link[cards:syntax]{formula-list-selector}})\cr
 a named list, a list of formulas,
 or a single formula where the list element is a named list of functions
 (or the RHS of a formula),
@@ -55,6 +65,8 @@ statistic labels, e.g. \code{everything() ~ list(n = "n", p = "pct")} or
 
 \item{quiet}{(scalar \code{logical})\cr
 Logical indicating whether to suppress additional messaging. Default is \code{FALSE}.}
+
+\item{fmt_fn}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}}
 
 \item{...}{Arguments passed to methods.}
 }
@@ -74,6 +86,6 @@ ard_categorical_max(
   variables = c(AESER, AESEV),
   id = USUBJID,
   by = TRTA,
-  denominator = cards::ADSL |> dplyr::rename(TRTA = ARM)
+  denominator = cards::ADSL
 )
 }
