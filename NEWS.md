@@ -1,3 +1,7 @@
+# cardx 0.3.2
+
+# cardx 0.3.1.9001
+
 # cardx 0.3.1
 
 * Added the `ard_emmeans_emmeans()` function. (#317)

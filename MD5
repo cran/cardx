@@ -1,6 +1,6 @@
-b7c2dce928bce8c260acb703be9a1a34 *DESCRIPTION
+eb7206e7b0232c8c16df938149d0f1de *DESCRIPTION
 ca3cbe440bfd0f3996b1f56a1d393703 *NAMESPACE
-659ec229494df262c3b6fc66e313775b *NEWS.md
+4fb9fab9bfdb22d95d1bfc6f44d03684 *NEWS.md
 8008b7b8d2bafd2007eb95430dcb1332 *R/add_total_n.survey.design.R
 8943047030f655d5dcd1facc4fe7cdea *R/ard_aod_wald_test.R
 b40f22bc9c208888bb162cfe4f2553d9 *R/ard_attributes.survey.design.R
@@ -41,7 +41,7 @@ eedddfc608e179bc0b6549e9726ffd03 *R/ard_survey_svyttest.R
 191491237a63a95550bb6a525a837888 *R/ard_survival_survdiff.R
 e13044e1fd3b643417c196ea89c47d97 *R/ard_survival_survfit.R
 fab98fd78756f06d256cdfb01d941833 *R/ard_survival_survfit_diff.R
-25ee20af5536549c3123ef49f796623f *R/ard_tabulate.survey.design.R
+038462c76347021a83b80c5369d17138 *R/ard_tabulate.survey.design.R
 7a1cc1e5da52303ec77a72be1f2f73da *R/ard_tabulate_abnormal.R
 031577ae54ccea6a0f361d6b4409d219 *R/ard_tabulate_max.R
 8fefa12d743e139b00c307e0b52bffee *R/ard_tabulate_value.survey.design.R
@@ -208,7 +208,7 @@ cb25504a76da25e8ce7c38a11b51596a *tests/testthat/test-ard_survey_svychisq.R
 b83ba02ee1b98177d49e00a3a985e869 *tests/testthat/test-ard_survival_survdiff.R
 f7ab951618c16861a3e791c5e896cc60 *tests/testthat/test-ard_survival_survfit.R
 865737c979480f2df532f6e38398c5dc *tests/testthat/test-ard_survival_survfit_diff.R
-66c61cbf06a8288786abeab4c0127810 *tests/testthat/test-ard_tabulate.survey.design.R
+e9359d485ff2a7acb67dd3ce5122f450 *tests/testthat/test-ard_tabulate.survey.design.R
 500bf8168962b885935f5c51e3c69135 *tests/testthat/test-ard_tabulate_abnormal.R
 ae969b16a23b1c7eb3978614cec2c5f9 *tests/testthat/test-ard_tabulate_max.R
 e243b97cfbf0e628c982bb1452193ed2 *tests/testthat/test-ard_tabulate_value.survey.design.R
