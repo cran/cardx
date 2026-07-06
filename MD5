@@ -1,6 +1,6 @@
-99d9a200aaa4f9eddc88deca2fb428b6 *DESCRIPTION
+fdb0f2b21bef6e9300aacfd09015dc5f *DESCRIPTION
 ca3cbe440bfd0f3996b1f56a1d393703 *NAMESPACE
-75e466c3142b894befaaa467b2c08962 *NEWS.md
+34d2d06a320d717e747316f78af6f0f6 *NEWS.md
 8008b7b8d2bafd2007eb95430dcb1332 *R/add_total_n.survey.design.R
 cfec28079a53fafd5c9d0b9dd8dfa3c9 *R/ard_aod_wald_test.R
 b40f22bc9c208888bb162cfe4f2553d9 *R/ard_attributes.survey.design.R
@@ -25,7 +25,7 @@ b033ece56cb18a869b1bb1be820fc338 *R/ard_stats_anova.R
 5ae5156ed6ac16644b9bc0d1ed9a1b3b *R/ard_stats_chisq_test.R
 2d83f2cbf968f20a2c7db5b0acc4514a *R/ard_stats_fisher_test.R
 db7c97894661570c017ee2440eaec4f8 *R/ard_stats_kruskal_test.R
-d8282be0521254ae5bfc49298639c736 *R/ard_stats_mantelhaen_test.R
+7b25e8e853258abadc869586c770a8ab *R/ard_stats_mantelhaen_test.R
 caf46bc57c0a71fd17d5cb5e9c19e63e *R/ard_stats_mcnemar_test.R
 de607383b9290e2a157965c59bac72cf *R/ard_stats_mood_test.R
 99ad1ffe3ce478b5aa4465a6b0912e57 *R/ard_stats_oneway_test.R
@@ -58,7 +58,7 @@ a9c1973b8d8847309ad41e6ce5e0dfa9 *R/import-standalone-tibble.R
 7a0c806ab6a6765101d1edb6898fd25a *R/proportion_ci.R
 a5e3b1c32eef23bf6f20d9746f698e8b *R/reexports.R
 1e6df85c4f115ed3da7f15966b2f1b3f *README.md
-fad45b1e7d8a37ef5dbf4f79bc79ab62 *inst/WORDLIST
+24aff5a0739f6fb66836bd063fef328b *inst/WORDLIST
 274b3f7803dc8c5fd74352d6bb99cf5d *man/ard_aod_wald_test.Rd
 e655cfee2123d4f0c5d149f93f867398 *man/ard_attributes.Rd
 ccc27b6bd759d60e409c0ce7e6c2a1ea *man/ard_car_anova.Rd
